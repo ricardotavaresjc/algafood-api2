@@ -33,6 +33,7 @@ public class EstadoRepositoryImpl implements EstadoRepository {
 		return em.merge(estado);
 	}
 
+	@Transactional
 	@Override
 	public void remover(Estado estado) {
 		buscar(estado.getId());
