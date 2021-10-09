@@ -69,7 +69,7 @@ public class CozinhaController {
 			/*usado para copiar as propriedades de um objeto para o outro, nesse caso ele so esta ignorando "id" 
 			para nao copiar um id nullo. Com se fosse cozinhaAtual.setNome(cozinha.getNome)*/			
 			BeanUtils.copyProperties(cozinha, cozinhaAtual,"id");
-			repository.adcionar(cozinhaAtual);
+			cadastroCozinha.salvar(cozinhaAtual);
 			
 			return ResponseEntity.ok(cozinhaAtual);
 			
