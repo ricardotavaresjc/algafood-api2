@@ -7,3 +7,5 @@ INSERT INTO restaurante(nome,taxa_frete,cozinha_id) values("Muua", 5.99,2);
 
 INSERT INTO estado(nome) values("Minas Gerais");
 INSERT INTO estado(nome) values("Goias");
+
+INSERT INTO cidade(nome, estado_id) values("Uberlandia",1);

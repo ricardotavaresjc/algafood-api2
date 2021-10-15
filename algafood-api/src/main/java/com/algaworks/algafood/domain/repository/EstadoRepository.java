@@ -13,6 +13,6 @@ public interface EstadoRepository {
 	
 	public Estado adcionar(Estado estado);
 	
-	public void remover(Estado estado);
+	public void remover(Long id);
 
 }
