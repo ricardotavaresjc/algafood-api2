@@ -98,16 +98,39 @@ public class RestauranteController {
 		return atualizar(restauranteId, restauranteAtual);
 	}
 	
+	/**
+	 * Cada propriedade dos dadosOrigem que veio no mapa deve ser passada para 
+	 * restauranteDestino usando a API de Reflections do Spring
+	 */
 	private void merge(Map<String, Object> dadosOrigem, Restaurante restauranteDestino) {
+		/*
+		 * ObjectMapper responsavel por converter(serializar) json em Obj Java ou vice versa
+		 * objectMapper.convertValue(dadosOrigem, Restaurante.class) esta convertendo o que esta vindo 
+		 * no corpo para restaurante
+		 */
 		ObjectMapper objectMapper = new ObjectMapper();
 		Restaurante restauranteOrigem = objectMapper.convertValue(dadosOrigem, Restaurante.class);
 		
 		dadosOrigem.forEach((nomePropriedade, valorPropriedade)-> {
+			/*Declaração do Field do java.lang
+			 * field representa o atributo de restaurante que queremos modificar
+			 * ReflectionUtils é do Spring		
+			 * o findField busca na classe Restaurante a propriedade que esta vindo em tempo de execução 
+			 * REtorna a instancia de um campo
+			 */
 			Field field = ReflectionUtils.findField(Restaurante.class, nomePropriedade);
+			
+			//Usado para permitir acesso aos metodos privados da classe Restaurante. Torna a variavel privada acessivel
 			field.setAccessible(true);
 			
+			/*
+			 * retorna o valor de um campo, o valor da propriedade 
+			 */
 			Object novoValor = ReflectionUtils.getField(field, restauranteOrigem);
 			
+			/*pega o valor na recuperado na instancia Field field e modifica para o novo valor
+			 * 
+			 */
 			ReflectionUtils.setField(field, restauranteDestino, novoValor);
 		});
 		
