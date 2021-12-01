@@ -17,7 +17,7 @@ public class CadastroCozinhaService {
 	private CozinhaRepository cozinhaRepository;
 	
 	public Cozinha salvar(Cozinha cozinha) {
-		return cozinhaRepository.adcionar(cozinha);
+		return cozinhaRepository.save(cozinha);
 	}
 	
 	public void excluir(Long cozinhaId) {
@@ -28,7 +28,7 @@ public class CadastroCozinhaService {
 		cozinha que tenha relacionamento
 		*/
 		try {
-			cozinhaRepository.remover(cozinhaId);
+			cozinhaRepository.deleteById(cozinhaId);
 		} catch (EmptyResultDataAccessException e){
 			throw new EntidadeNaoEncontradaException(
 					String.format("Não existe um cadastro de cozinha com o codigo %d", cozinhaId));

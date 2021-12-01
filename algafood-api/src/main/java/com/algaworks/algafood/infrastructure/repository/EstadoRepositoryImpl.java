@@ -13,37 +13,37 @@ import com.algaworks.algafood.domain.model.Estado;
 import com.algaworks.algafood.domain.repository.EstadoRepository;
 
 @Component
-public class EstadoRepositoryImpl implements EstadoRepository {
+public class EstadoRepositoryImpl  {
 
 	@PersistenceContext
 	private EntityManager em;
 	
-	@Override
-	public List<Estado> listar() {		
-		return em.createQuery("from Estado", Estado.class).getResultList();
-	}
-
-	@Override
-	public Estado buscar(Long id) {
-		return em.find(Estado.class, id);
-	}
-
-	@Transactional
-	@Override
-	public Estado adcionar(Estado estado) {		
-		return em.merge(estado);
-	}
-
-	@Transactional
-	@Override
-	public void remover(Long id) {
-		Estado estado = buscar(id);
-		if(estado == null) {
-			throw new EmptyResultDataAccessException(1);
-		}
-		em.remove(estado);
-		
-	}
+//	@Override
+//	public List<Estado> listar() {		
+//		return em.createQuery("from Estado", Estado.class).getResultList();
+//	}
+//
+//	@Override
+//	public Estado buscar(Long id) {
+//		return em.find(Estado.class, id);
+//	}
+//
+//	@Transactional
+//	@Override
+//	public Estado adcionar(Estado estado) {		
+//		return em.merge(estado);
+//	}
+//
+//	@Transactional
+//	@Override
+//	public void remover(Long id) {
+//		Estado estado = buscar(id);
+//		if(estado == null) {
+//			throw new EmptyResultDataAccessException(1);
+//		}
+//		em.remove(estado);
+//		
+//	}
 	
 	
 
