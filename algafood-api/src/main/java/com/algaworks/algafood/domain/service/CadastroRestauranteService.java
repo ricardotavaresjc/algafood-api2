@@ -51,7 +51,7 @@ public class CadastroRestauranteService {
 		}
 		restaurante.setCozinha(cozinha.get());
 		
-		return restauranteRepository.adcionar(restaurante);
+		return restauranteRepository.save(restaurante);
 	}
 	
 
