@@ -36,11 +36,17 @@ public class CozinhaController {
 	@GetMapping
 	public List<Cozinha> listar(){		
 		return repository.findAll();
-	}
-	
+	}	
+
 	//Metodo desenvolvedor 2
 	@GetMapping("/id")
 	public List<Cozinha> listar2(){		
+		return repository.findAll();
+	}	
+	
+	//Metodo curso
+	@GetMapping("/testeCurso")
+	public List<Cozinha> listarTesteCurso(){		
 		return repository.findAll();
 	}
 	
