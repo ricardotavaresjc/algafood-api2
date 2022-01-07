@@ -38,6 +38,7 @@ public class CozinhaController {
 		return repository.findAll();
 	}	
 	
+	//teste curso
 	@GetMapping("/{buscarId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable(name = "buscarId") Long id) {
 		Optional<Cozinha> cozinha = repository.findById(id);
