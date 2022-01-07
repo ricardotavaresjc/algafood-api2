@@ -38,6 +38,12 @@ public class CozinhaController {
 		return repository.findAll();
 	}
 	
+	//Metodo curso
+	@GetMapping("/testeCurso")
+	public List<Cozinha> listarTesteCurso(){		
+		return repository.findAll();
+	}
+	
 	/*
 	 * Acrescentei essa linha aqui
 	 */
