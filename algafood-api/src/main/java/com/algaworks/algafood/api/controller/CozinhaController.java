@@ -41,7 +41,15 @@ public class CozinhaController {
 	/*
 	 * Acrescentei essa linha aqui
 	 */
+
 	//Acrescentei outra coisa agora na linha 44
+
+	//Ola as duas agora vao conlitar desenvolvedor 2
+	//e muito desenvolvedor 2
+
+	//complicou curso
+	//curso
+
 	@GetMapping("/{buscarId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable(name = "buscarId") Long id) {
 		Optional<Cozinha> cozinha = repository.findById(id);
