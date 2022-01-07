@@ -41,8 +41,13 @@ public class CozinhaController {
 	/*
 	 * Acrescentei essa linha aqui
 	 */
+<<<<<<< HEAD
 	//Ola as duas agora vao conlitar desenvolvedor 2
 	//e muito desenvolvedor 2
+=======
+	//complicou curso
+	//curso
+>>>>>>> branch 'curso' of https://github.com/ricardotavaresjc/algafood-api.git
 	@GetMapping("/{buscarId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable(name = "buscarId") Long id) {
 		Optional<Cozinha> cozinha = repository.findById(id);
