@@ -55,6 +55,12 @@ public class CozinhaController {
 		return repository.findAll();
 	}	
 	
+	//Teste curso 1 conflito na linha 52 
+	@GetMapping
+	public List<Cozinha> curso1(){		
+		return repository.findAll();
+	}	
+	
 	//teste desenvolvedor
 	//teste curso
 	@GetMapping("/{buscarId}")
@@ -111,7 +117,7 @@ public class CozinhaController {
 	}	
 	
 	// desenvolvedor
-	@GetMapping
+		@GetMapping
 	public List<Cozinha> listar4() {
 		return repository.findAll();
 	}
