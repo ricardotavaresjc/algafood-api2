@@ -38,34 +38,6 @@ public class CozinhaController {
 		return repository.findAll();
 	}	
 	
-	//Metodo desenvolvedor 2
-	@GetMapping("/id")
-	public List<Cozinha> listar2(){		
-		return repository.findAll();
-	}	
-	
-	//Metodo curso
-	@GetMapping("/testeCurso")
-	public List<Cozinha> listarTesteCurso(){		
-		return repository.findAll();
-	}
-	
-	/*
-	 * Acrescentei essa linha aqui
-	 */
-
-	//Acrescentei outra coisa agora na linha 44
-
-	//Ola as duas agora vao conlitar desenvolvedor 2
-	//e muito desenvolvedor 2
-
-	//complicou curso
-	//curso
-	
-	//tambem escrevi na linha 53 desenvolvedor
-
-	//agora vamos fazer o teste do merge Commit(commit the result) linha 53
-
 	@GetMapping("/{buscarId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable(name = "buscarId") Long id) {
 		Optional<Cozinha> cozinha = repository.findById(id);
@@ -118,12 +90,6 @@ public class CozinhaController {
 		}
 		
 		
-	}
-	
-	//Metodo cursolinha 123
-	@GetMapping("/curso")
-	public List<Cozinha> listar3(){		
-		return repository.findAll();
 	}
 
 }
