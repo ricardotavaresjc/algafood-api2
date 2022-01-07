@@ -39,6 +39,7 @@ public class CozinhaController {
 	}	
 	
 	//teste desenvolvedor
+	//teste curso
 	@GetMapping("/{buscarId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable(name = "buscarId") Long id) {
 		Optional<Cozinha> cozinha = repository.findById(id);
@@ -92,6 +93,5 @@ public class CozinhaController {
 		
 		
 	}
-
 
 }
