@@ -38,6 +38,12 @@ public class CozinhaController {
 		return repository.findAll();
 	}	
 	
+	//Teste curso 1
+	@GetMapping
+	public List<Cozinha> listar1(){		
+		return repository.findAll();
+	}	
+	
 	//teste desenvolvedor
 	//teste curso
 	@GetMapping("/{buscarId}")
@@ -89,9 +95,14 @@ public class CozinhaController {
 		} catch (EntidadeEmUsoException e) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
 			
-		}
+		}			
 		
-		
+	}
+	
+	// Teste curso 2
+	@GetMapping
+	public List<Cozinha> listar2() {
+		return repository.findAll();
 	}
 
 }
