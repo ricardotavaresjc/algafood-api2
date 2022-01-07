@@ -119,5 +119,11 @@ public class CozinhaController {
 		
 		
 	}
+	
+	//Metodo desenvolvedor 123
+	@GetMapping("/testeDesenvolve")
+	public List<Cozinha> listarTesteCurso2(){		
+		return repository.findAll();
+	}
 
 }
