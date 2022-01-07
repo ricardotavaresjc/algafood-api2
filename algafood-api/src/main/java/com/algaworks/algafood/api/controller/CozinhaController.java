@@ -43,6 +43,12 @@ public class CozinhaController {
 	public List<Cozinha> listar3(){		
 		return repository.findAll();
 	}	
+	//Teste curso 1
+	@GetMapping
+	public List<Cozinha> listar1(){		
+		return repository.findAll();
+	}	
+	
 	//teste desenvolvedor
 	//teste curso
 	@GetMapping("/{buscarId}")
@@ -94,8 +100,7 @@ public class CozinhaController {
 		} catch (EntidadeEmUsoException e) {
 			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
 			
-		}
-		
+		}			
 		
 	}	
 	
@@ -104,5 +109,11 @@ public class CozinhaController {
 		public List<Cozinha> listar4(){		
 			return repository.findAll();
 		}	
+	
+	// Teste curso 2
+	@GetMapping
+	public List<Cozinha> listar2() {
+		return repository.findAll();
+	}
 
 }
