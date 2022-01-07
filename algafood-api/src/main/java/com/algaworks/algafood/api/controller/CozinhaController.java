@@ -120,8 +120,8 @@ public class CozinhaController {
 		
 	}
 	
-	//Metodo desenvolvedor 2 linha 123
-	@GetMapping("/desenvolvedor")
+	//Metodo cursolinha 123
+	@GetMapping("/curso")
 	public List<Cozinha> listar3(){		
 		return repository.findAll();
 	}
