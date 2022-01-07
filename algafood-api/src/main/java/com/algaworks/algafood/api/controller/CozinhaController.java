@@ -37,7 +37,7 @@ public class CozinhaController {
 	public List<Cozinha> listar(){		
 		return repository.findAll();
 	}	
-
+	
 	//Metodo desenvolvedor 2
 	@GetMapping("/id")
 	public List<Cozinha> listar2(){		
@@ -118,6 +118,12 @@ public class CozinhaController {
 		}
 		
 		
+	}
+	
+	//Metodo desenvolvedor 2 linha 123
+	@GetMapping("/desenvolvedor")
+	public List<Cozinha> listar3(){		
+		return repository.findAll();
 	}
 
 }
