@@ -49,6 +49,8 @@ public class CozinhaController {
 
 	//complicou curso
 	//curso
+	
+	//tambem escrevi na linha 53 desenvolvedor
 
 	@GetMapping("/{buscarId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable(name = "buscarId") Long id) {
