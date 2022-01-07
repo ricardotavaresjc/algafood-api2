@@ -49,6 +49,8 @@ public class CozinhaController {
 
 	//complicou curso
 	//curso
+	
+	//agora vamos fazer o teste do merge Commit(commit the result) linha 53
 
 	@GetMapping("/{buscarId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable(name = "buscarId") Long id) {
