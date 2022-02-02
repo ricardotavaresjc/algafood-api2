@@ -38,25 +38,7 @@ public class CozinhaController {
 		return repository.findAll();
 	}	
 	
-	//desenvolvedor
-	@GetMapping
-	public List<Cozinha> listar3(){		
-		return repository.findAll();
-	}	
-	//Teste curso 1
-	@GetMapping
-	public List<Cozinha> listar1(){		
-		return repository.findAll();
-	}	
 	
-	//Teste curso 1 conflito na linha 52 
-	@GetMapping
-	public List<Cozinha> curso1(){		
-		return repository.findAll();
-	}	
-	
-	//teste desenvolvedor
-	//teste curso
 	@GetMapping("/{buscarId}")
 	public ResponseEntity<Cozinha> buscar(@PathVariable(name = "buscarId") Long id) {
 		Optional<Cozinha> cozinha = repository.findById(id);
@@ -108,24 +90,6 @@ public class CozinhaController {
 			
 		}			
 		
-	}	
-	
-	//desenvolvedor
-		@GetMapping
-		public List<Cozinha> listar4(){		
-			return repository.findAll();
-		}	
-	
-	// Teste curso 2
-	@GetMapping
-	public List<Cozinha> listar2() {
-		return repository.findAll();
-	}
-	
-	// Teste curso(main) conflito na linha 125
-	@GetMapping
-	public List<Cozinha> curso2() {
-		return repository.findAll();
-	}
+	}		
 
 }

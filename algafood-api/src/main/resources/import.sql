@@ -9,3 +9,10 @@ INSERT INTO estado(nome) values("Minas Gerais");
 INSERT INTO estado(nome) values("Goias");
 
 INSERT INTO cidade(nome, estado_id) values("Uberlandia",1);
+
+INSERT INTO forma_pagamento(descricao) values("Cartão Débito");
+INSERT INTO forma_pagamento(descricao) values("Cartão Crédito");
+INSERT INTO forma_pagamento(descricao) values("Dinheiro");
+
+INSERT INTO permissao(nome,descricao) values("Administrador","Administrador do Sistema");
+INSERT INTO permissao(nome,descricao) values("Usuarios","Usuario do sistema");
