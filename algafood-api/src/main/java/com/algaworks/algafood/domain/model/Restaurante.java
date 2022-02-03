@@ -26,11 +26,11 @@ public class Restaurante {
 	@Column(nullable = false)
 	private String nome;
 	
-	@Column(nullable = false)
+	@Column(name = "taxa_frete", nullable = false)
 	private BigDecimal taxaFrete;
 	
 	@ManyToOne
-	@JoinColumn(nullable = false)
+	@JoinColumn(name = "cozinha_id", nullable = false)
 	private Cozinha cozinha;
 
 }
