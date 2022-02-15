@@ -7,6 +7,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -25,34 +29,26 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 	public List<Restaurante> find(String nome,
 			BigDecimal taxaFreteInicial, BigDecimal taxaFreteFinal){
 		
-//		var jqpl = "from Restaurante where nome like :nome "
-//				+ "and taxaFrete between :taxaInicial and :taxaFinal";
+		//construtor das clausulas
+		CriteriaBuilder builder = manager.getCriteriaBuilder();
+		CriteriaQuery<Restaurante> criteria = builder.createQuery(Restaurante.class);
 		
-		StringBuilder jqpl = new StringBuilder("from Restaurante where 0 = 0 ");
+		//é o mesmo que "from Restaurante"
+		//Root é a raiz
+		Root<Restaurante> root =  criteria.from(Restaurante.class);
 		
-		//usado para que a parte de settar os parametros fique dinamico tambem
-		var parametros = new HashMap<String, Object>();
+		//Criar os predicados(filtros)
+		Predicate nomePredicate = builder.like(root.get("nome"), "%" + nome + "%");
+		Predicate taxaFreteInicialPredicate = builder
+				.greaterThanOrEqualTo(root.get("taxaFreteInicial"), taxaFreteInicial);
+		Predicate taxaFreteFinalPredicate = builder
+				.greaterThanOrEqualTo(root.get("taxaFreteFinal"), taxaFreteFinal);
 		
-		//O nome pode vir vazio, então podemos usar a classe StringUtils do pacote org.springframework.util para pegar tanto nulo como vazio 
-		if(StringUtils.hasLength(nome)) {
-			jqpl.append("and nome like :nome ");
-			//não permite colocar % direto na string com a instrução jqpl
-			parametros.put("nome", "%" + nome + "%");
-		}
+		//a clausula Where
+		criteria.where(nomePredicate,taxaFreteInicialPredicate,taxaFreteFinalPredicate);
 		
-		if(taxaFreteInicial != null) {
-			jqpl.append("and taxaFrete >= :taxaInicial ");
-			parametros.put("taxaInicial", taxaFreteInicial);
-		}
-		
-		if(taxaFreteFinal != null) {
-			jqpl.append("and taxaFrete < :taxaFinal ");
-			parametros.put("taxaFinal", taxaFreteFinal);
-		}
-		
-		TypedQuery<Restaurante> query = manager.createQuery(jqpl.toString(), Restaurante.class);
-		
-		parametros.forEach((chave, valor) -> query.setParameter(chave, valor));
+		//PRecisar criar uma TypedQuery para retornar esse tipo
+		TypedQuery<Restaurante> query = manager.createQuery(criteria);
 		
 		return query.getResultList();
 	}
