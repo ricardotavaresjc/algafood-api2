@@ -1,6 +1,7 @@
 package com.algaworks.algafood.infrastructure.repository;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,15 +38,28 @@ public class RestauranteRepositoryImpl implements RestauranteRepositoryQueries {
 		//Root é a raiz
 		Root<Restaurante> root =  criteria.from(Restaurante.class);
 		
-		//Criar os predicados(filtros)
-		Predicate nomePredicate = builder.like(root.get("nome"), "%" + nome + "%");
-		Predicate taxaFreteInicialPredicate = builder
-				.greaterThanOrEqualTo(root.get("taxaFreteInicial"), taxaFreteInicial);
-		Predicate taxaFreteFinalPredicate = builder
-				.greaterThanOrEqualTo(root.get("taxaFreteFinal"), taxaFreteFinal);
+		//Criar um list de predicates 
+		var predicates = new ArrayList<Predicate>();
 		
+		//Criar os predicados(filtros) de forma dinamica para passar no where
+		if(StringUtils.hasText(nome)) {
+			predicates.add(builder.like(root.get("nome"), "%" + nome + "%"));
+		}
+		
+		if(taxaFreteInicial != null) {
+			predicates.add(builder
+					.greaterThanOrEqualTo(root.get("taxaFrete"), taxaFreteInicial));
+		}
+		
+		if(taxaFreteFinal != null) {
+			predicates.add(builder
+				.lessThanOrEqualTo(root.get("taxaFrete"), taxaFreteFinal));
+		}
+				
 		//a clausula Where
-		criteria.where(nomePredicate,taxaFreteInicialPredicate,taxaFreteFinalPredicate);
+		//varios predicates ele fara o end entre eles
+		//where espera um array, foi necessario converter list para array
+		criteria.where(predicates.toArray(new Predicate[0]));
 		
 		//PRecisar criar uma TypedQuery para retornar esse tipo
 		TypedQuery<Restaurante> query = manager.createQuery(criteria);
