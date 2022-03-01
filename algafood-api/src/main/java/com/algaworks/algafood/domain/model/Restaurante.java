@@ -53,15 +53,16 @@ public class Restaurante {
 	@Column(nullable = false, columnDefinition = "datetime")
 	private LocalDateTime dataAtualizacao;
 
+	//@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "cozinha_id", nullable = false)
 	private Cozinha cozinha;
 	
-	@JsonIgnore //para não mostrar no payload e deixa-lo grande
+	//@JsonIgnore //para não mostrar no payload e deixa-lo grande
 	@ManyToMany
 	@JoinTable(name = "restaurante_forma_pagamento",
-	joinColumns = @JoinColumn(name = "restaurante_id"),
-	inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))			
+		joinColumns = @JoinColumn(name = "restaurante_id"),
+		inverseJoinColumns = @JoinColumn(name = "forma_pagamento_id"))			
 	private List<FormaPagamento> formasPagamento = new ArrayList<>();
 	
 	@JsonIgnore
